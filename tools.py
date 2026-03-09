@@ -186,25 +186,9 @@ def osint_email(email):
         return f"Email check error: {e}"
 
 def fake_profile():
-    first_names = ["Emma", "Olivia", "Sophia", "Ava", "Isabella", "Mia", "Charlotte", "Amelia"]
-    last_names = ["Johnson", "Smith", "Davis", "Wilson", "Moore", "Taylor", "Anderson", "Thomas"]
-    cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio"]
-    jobs = ["Software Engineer", "Graphic Designer", "Teacher", "Doctor", "Marketing Manager", "Accountant"]
-    
-    first = random.choice(first_names)
-    last = random.choice(last_names)
+    import random, string
+    name = random.choice(["Emma","Olivia","Sophia","Ava","Mia"]) + " " + random.choice(["Smith","Johnson","Davis","Wilson","Moore"])
     age = random.randint(20, 45)
-    city = random.choice(cities)
-    job = random.choice(jobs)
-    email = f"{first.lower()}.{last.lower()}{random.randint(1,999)}@gmail.com"
+    email = name.lower().replace(" ", ".") + str(random.randint(1,999)) + "@gmail.com"
     phone = f"+1{random.randint(2000000000, 9999999999)}"
-    
-    return (
-        f"🎭 Fake Profile Generated:\n\n"
-        f"Name: {first} {last}\n"
-        f"Age: {age}\n"
-        f"City: {city}\n"
-        f"Job: {job}\n"
-        f"Email: {email}\n"
-        f"Phone: {phone}\n"
-        f"Username: {first.lower()}{last.lower()}{random.randint(1,99)}"
+    return f"Name: {name}\nAge: {age}\nEmail: {email}\nPhone: {phone}"
