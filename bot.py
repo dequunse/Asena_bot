@@ -72,12 +72,7 @@ async def get_groq_response(user_id, user_message):
         return read_notes()
     if any(w in msg for w in ["time", "date", "what day", "what time"]):
         return get_current_time()
-    if any(w in msg for w in ["search", "find", "look up", "who is", "what is", "how to"]):
-        search_result = search_web(user_message)
-        context = f"User question: {user_message}\n\nWeb search results:\n{search_result}"
-    else:
         context = user_message
-
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     for m in memory.get_messages(user_id)[:-1]:
         messages.append({"role": m["role"], "content": m["content"]})
