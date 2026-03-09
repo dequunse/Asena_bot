@@ -178,7 +178,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         except Exception as e:
             reply = f"Could not set reminder: {str(e)}"
     else:
-        reply = await get_groq_response(user_id, update.message.text)
+        reply = get_groq_response(user_id, update.message.text)
 
     await send_reply(update, reply)
 
